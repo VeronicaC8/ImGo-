@@ -9,13 +9,17 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     int idUsuarioPrueba=1;
+    ControlBD BDhelper;
 
     //Declaracion de botones
     private ActionBar toolbar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -31,8 +35,15 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("CATEGORIA");
-        //
         loadFragment(new CategoriaFragment());
+
+
+        //Cargar Base de datos
+        BDhelper=new ControlBD(this);
+        BDhelper.abrir();
+        String tost=BDhelper.llenarBD();
+        BDhelper.cerrar();
+        Toast.makeText(this, tost, Toast.LENGTH_SHORT).show();
 
     }
 
