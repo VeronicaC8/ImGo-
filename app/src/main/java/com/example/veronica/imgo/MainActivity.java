@@ -11,14 +11,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     int idUsuarioPrueba=1;
     ControlBD BDhelper;
 
     //Declaracion de botones
     private ActionBar toolbar;
-
+   FavoritosFragment listaSitiosF;
+  // DetalleSitioFragment detalleSitio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -62,8 +63,9 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.navigation_favorito:
                     toolbar.setTitle("FAVORITOS");
-                    fragment = new FavoritosFragment();
-                    loadFragment(fragment);
+                    listaSitiosF=new FavoritosFragment();
+                    loadFragment(listaSitiosF);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,listaSitiosF).commit();
                     return true;
 
                 case R.id.navigation_precio:

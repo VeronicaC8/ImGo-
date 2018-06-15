@@ -43,7 +43,9 @@
         <activity android:name=".sitioListActivity"></activity>
 
         <activity android:name=".LoginActivity" />
+
         <activity android:name=".Main2Activity"></activity>
+
     </application>
 
 </manifest>

@@ -12,7 +12,11 @@ public class Sitio {
     public Sitio() {
     }
 
-    public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin, String imagen) {
+
+
+    public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin) {
+
+
         this.idSitio = idSitio;
         this.idCategoria = idCategoria;
         this.descripcion = descripcion;
@@ -27,6 +31,7 @@ public class Sitio {
         return idSitio;
     }
 
+
     public int getIdCategoria() {
         return idCategoria;
     }
@@ -34,8 +39,6 @@ public class Sitio {
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
-
-
 
     public String getDescripcion() {
         return descripcion;
@@ -74,6 +77,7 @@ public class Sitio {
     }
 
 
+
     public String getImagen() {
         return imagen;
     }
@@ -87,4 +91,5 @@ public class Sitio {
         return nombreSitio;
     }
 }
+
 

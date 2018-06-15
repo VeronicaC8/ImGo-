@@ -22,7 +22,7 @@ public class ControlBD {
     private static final String[]camposUsuario=new String[]{"idUsuario","idRol","userName","password"};
     private static final String[]camposCategoria=new String[]{"idCategoria","nombreCategoria"};
     private static final String[]camposUbicacion=new String[]{"idUbicacion","idSitio","direccion","coordenadaX","coordenadaY"};
-    private static final String[]camposSitio=new String[]{"idSitio","idUsuario","descripcion","nombreSitio","precioMax","precioMin"};
+    private static final String[]camposSitio=new String[]{"idSitio","idCategoria","descripcion","nombreSitio","precioMax","precioMin"};
     private static final String[]camposPuntuacion=new String[]{"idPuntuacion","descripcionPuntuacion"};
     private static final String[]camposPuntuacionSitio=new String[]{"idPuntuacionSitio","idPuntuacion","idSitio","resena"};
 
@@ -59,10 +59,10 @@ public class ControlBD {
                 db.execSQL("CREATE TABLE usuario(idUsuario INTEGER NOT NULL PRIMARY KEY, idRol INTEGER NOT NULL, userName VARCHAR(20) NOT NULL, password VARCHAR(8) NOT NULL); ");
                 db.execSQL("CREATE TABLE categoria(idCategoria INTEGER NOT NULL PRIMARY KEY, nombreCategoria VARCHAR(50) NOT NULL); ");
                 db.execSQL("CREATE TABLE ubicacion(idUbicacion INTEGER NOT NULL PRIMARY KEY, idSitio INTEGER NOT NULL, direccion VARCHAR(50) NOT NULL, coordenadaX FLOAT NOT NULL,coordenadaY FLOAT NOT NULL); ");
-                db.execSQL("CREATE TABLE sitio(idSitio INTEGER NOT NULL PRIMARY KEY, idUsuario INTEGER NOT NULL, descripcion VARCHAR(100) NOT NULL, nombreSitio VARCHAR(20) NOT NULL, precioMax FLOAT NOT NULL, precioMin FLOAT NOT NULL); ");
+                db.execSQL("CREATE TABLE sitio(idSitio INTEGER NOT NULL PRIMARY KEY, idCategoria INTEGER NOT NULL, descripcion VARCHAR(100) NOT NULL, nombreSitio VARCHAR(20) NOT NULL, precioMax FLOAT NOT NULL, precioMin FLOAT NOT NULL); ");
                 db.execSQL("CREATE TABLE puntuacion(idPuntuacion INTEGER NOT NULL PRIMARY KEY, descripcionPuntuacion VARCHAR(10) NOT NULL); ");
                 db.execSQL("CREATE TABLE puntuacionSitio(idPuntuacionSitio INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, idPuntuacion INTEGER NOT NULL, idSitio INTEGER NOT NULL, resena VARCHAR(50) NOT NULL); ");
-                db.execSQL("INSERT INTO sitio(idSitio, idUsuario, descripcion, nombreSitio, precioMax, precioMin) values(01,1,'Pizzeria de especialidad, ingredientes seleccionados, telefono a domicilio 2275-5555','Pizza Hut',15,4);");
+                //db.execSQL("INSERT INTO sitio(idSitio, idCategoria, descripcion, nombreSitio, precioMax, precioMin) values(01,1,'Pizzeria de especialidad, ingredientes seleccionados, telefono a domicilio 2275-5555','Pizza Hut',15,4);");
 
             }catch (SQLException e){
                 e.printStackTrace();
@@ -183,6 +183,28 @@ public class ControlBD {
         }
         cerrar();
         return sitio;
+    }
+
+    public String insertar(Sitio sitio){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues sit = new ContentValues();
+        sit.put("idSitio", sitio.getIdSitio());
+        sit.put("idCategoria", sitio.getIdCategoria());
+        sit.put("descripcion", sitio.getDescripcion());
+        sit.put("nombreSitio", sitio.getNombreSitio());
+        sit.put("precioMax", sitio.getPrecioMax());
+        sit.put("precioMin", sitio.getPrecioMin());
+
+        contador=db.insert("sitio", null, sit);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados=regInsertados+contador;
+        }
+        return regInsertados;
     }
 
 
