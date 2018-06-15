@@ -92,9 +92,9 @@
                         android:layout_marginEnd="33dp"
                         android:layout_marginStart="44dp"
                         android:layout_marginTop="32dp"
-                        android:text="IdUsuario"
+                        android:text="IdCategoria"
                         app:layout_constraintBottom_toTopOf="@+id/idSit"
-                        app:layout_constraintEnd_toStartOf="@+id/editIdUsuario"
+                        app:layout_constraintEnd_toStartOf="@+id/editIdCategoria"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="MissingConstraints" />
@@ -215,7 +215,7 @@
                         tools:ignore="MissingConstraints" />
 
                     <EditText
-                        android:id="@+id/editIdUsuario"
+                        android:id="@+id/editIdCategoria"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
