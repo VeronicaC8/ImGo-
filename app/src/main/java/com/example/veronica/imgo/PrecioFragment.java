@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,28 +56,30 @@ public class PrecioFragment extends Fragment {
         vista =inflater.inflate(R.layout.fragment_precio,container,false);
 
         context=getActivity().getApplication().getApplicationContext();
+
+        editPrecio=(EditText) vista.findViewById(R.id.editPrecio);
+
         listaSitioPrecio=(ListView) vista.findViewById(R.id.lst_precio);
         //editNombreSitio=(TextView) vista.findViewById(R.id.editNombreSitio);
         Lista=new ArrayList<Sitio>();
 
-        Lista=helper.getSitioPrecio(Float.valueOf("5"));
 
+        btnPrecio= vista.findViewById(R.id.botonPrecio);
+        btnPrecio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Presionado",Toast.LENGTH_LONG).show();
+                Lista=helper.getSitioPrecio(editPrecio.getText().toString());
 
+              //  AdaptadorP miAdaptador=new AdaptadorP(getApplicationContext(),Lista);
 
-
-        ArrayAdapter<Sitio> adapterFinal= new ArrayAdapter<Sitio>(context, android.R.layout.simple_spinner_item, Lista);
-        listaSitioPrecio.setAdapter(adapterFinal);
-
-
-
-
-
-
-
+                ArrayAdapter<Sitio> adapterFinal= new ArrayAdapter<Sitio>(context, android.R.layout.simple_spinner_item, Lista);
+                listaSitioPrecio.setAdapter(adapterFinal);
+            }
+        });
 
         return vista;
     }
-
 
 
 }

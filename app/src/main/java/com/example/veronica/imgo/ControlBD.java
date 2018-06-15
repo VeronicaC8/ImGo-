@@ -145,10 +145,10 @@ public class ControlBD {
     }
 
 
-    public ArrayList<Sitio> getSitioPrecio(Float precioDeseado){
+    public ArrayList<Sitio> getSitioPrecio(String precioDeseado){
         ArrayList<Sitio> listaSitioPrecio= new ArrayList<>();
         List listaSitioPre= new ArrayList();
-        String[] precioDe={String.valueOf(precioDeseado),String.valueOf(precioDeseado)};   //precioMax","precioMin
+        String[] precioDe={precioDeseado,precioDeseado};   //precioMax","precioMin
         abrir();
         Cursor cursor=db.query("sitio",camposSitio,"precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
         //    Cursor cursor=db.query("sitio",camposSitio,"idSitio WHERE precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
@@ -175,7 +175,7 @@ public class ControlBD {
         if (cursor.moveToFirst()){
             sitio=new Sitio();
             sitio.setIdSitio(cursor.getInt(0));
-          //  sitio.setIdUsuario(cursor.getInt(1));
+            sitio.setIdCategoria(cursor.getInt(1));
             sitio.setDescripcion(cursor.getString(2));
             sitio.setNombreSitio(cursor.getString(3));
             sitio.setPrecioMax(cursor.getFloat(4));
