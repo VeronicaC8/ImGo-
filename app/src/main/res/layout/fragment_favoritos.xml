@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".FavoritosFragment">
 
-    <!-- TODO: Update blank fragment layout android:id="@+id/android:list"-->
+    <!-- TODO: Update blank fragment layout -->
 
     <ListView
-        android:id="@+id/android:list"
-        android:layout_width="358dp"
-        android:layout_height="497dp"
-        />
+        android:id="@+id/listViewFav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </FrameLayout>
