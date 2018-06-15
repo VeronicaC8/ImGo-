@@ -29,7 +29,7 @@ public class sitioInsertActivity extends AppCompatActivity {
         editDescripcion = (EditText) findViewById(R.id.editDescripcion);
         editNombreSitio = (EditText) findViewById(R.id.editNombreSitio);
         editPrecioMin = (EditText) findViewById(R.id.editPrecioMin);
-        editPrecioMax = (EditText) findViewById(R.id.editPrecioMin);
+        editPrecioMax = (EditText) findViewById(R.id.editPrecioMax);
     }
     public void insertarSitio(View v) {
         Integer idSitio =Integer.valueOf(editIdSitio.getText().toString());
@@ -42,9 +42,6 @@ public class sitioInsertActivity extends AppCompatActivity {
                 Sitio sitio=new Sitio();
                 sitio.setIdSitio(idSitio);
                 sitio.setIdCategoria(idCategoria);
-
-        //        sitio.setIdUsuario(idUsuario);
-
                 sitio.setDescripcion(descripcion);
                 sitio.setNombreSitio(nombreSitio);
                 sitio.setPrecioMax(precioMax);
