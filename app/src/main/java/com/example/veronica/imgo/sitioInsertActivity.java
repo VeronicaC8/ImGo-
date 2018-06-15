@@ -50,9 +50,9 @@ public class sitioInsertActivity extends AppCompatActivity {
                 sitio.setPrecioMax(precioMax);
                 sitio.setPrecioMin(precioMin);
                 helper.abrir();
-        //        regInsertados=helper.insertar(sitio);
+                regInsertados=helper.insertar(sitio);
                 helper.cerrar();
-        //        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+               Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
     public void limpiarTexto(View v) {
         editIdSitio.setText("");
