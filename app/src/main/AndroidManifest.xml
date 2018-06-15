@@ -30,7 +30,11 @@
             android:theme="@style/AppTheme">
             />
         </activity>
-        <activity android:name=".CategoriaActivity"></activity>
+        <activity android:name=".CategoriaActivity" />
+        <activity android:name=".sitioInsertActivity" />
+        <activity android:name=".sitioEditActivity" />
+        <activity android:name=".sitioDeleteActivity" />
+        <activity android:name=".sitioListActivity"></activity>
     </application>
 
 </manifest>

@@ -24,47 +24,48 @@ public class Sitio {
         return idSitio;
     }
 
-    public void setIdSitio(int idSitio) {
-        this.idSitio = idSitio;
-    }
-
     public int getIdUsuario() {
         return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
     public String getNombreSitio() {
         return nombreSitio;
-    }
-
-    public void setNombreSitio(String nombreSitio) {
-        this.nombreSitio = nombreSitio;
     }
 
     public float getPrecioMax() {
         return precioMax;
     }
 
-    public void setPrecioMax(float precioMax) {
-        this.precioMax = precioMax;
-    }
-
     public float getPrecioMin() {
         return precioMin;
+    }
+
+    public void setIdSitio(int idSitio) {
+        this.idSitio = idSitio;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setNombreSitio(String nombreSitio) {
+        this.nombreSitio = nombreSitio;
+    }
+
+    public void setPrecioMax(float precioMax) {
+        this.precioMax = precioMax;
     }
 
     public void setPrecioMin(float precioMin) {
         this.precioMin = precioMin;
     }
+
 }

@@ -138,6 +138,30 @@ public class ControlBD {
         return regInsertados;
     }
 
+public String insertar(Sitio sitio){
+    String regInsertados="Registro Insertado Nº= ";
+    long contador=0;
+    ContentValues sit = new ContentValues();
+    sit.put("idSitio", sitio.getIdSitio());
+    sit.put("idUsuario", sitio.getIdUsuario());
+    sit.put("descripcion", sitio.getDescripcion());
+    sit.put("nombreSitio", sitio.getNombreSitio());
+    sit.put("precioMax", sitio.getPrecioMax());
+    sit.put("precioMin", sitio.getPrecioMin());
+
+    contador=db.insert("sitio", null, sit);
+    if(contador==-1 || contador==0)
+    {
+        regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+    }
+    else {
+        regInsertados=regInsertados+contador;
+    }
+    return regInsertados;
+}
+
+
+
 
 
     public String llenarBD(){

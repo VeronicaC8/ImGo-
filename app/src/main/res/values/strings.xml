@@ -24,4 +24,22 @@
 
 
     <string name="restaurante">Restaurantes</string>
+    <string name="title_activity_insert_sitio">insertSitioActivity</string>
+    <string name="title_activity_editar_sitio">editarSitioActivity</string>
+    <string name="title_activity_delete_sitio">deleteSitioActivity</string>
+    <string name="title_activity_list_sitio">listSitioActivity</string>
+    <string name="title_activity_sitio_insert">sitioInsertActivity</string>
+
+    <string name="insertar">Insertar</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="opciones">Opciones:</string>
+
+    <string name="idSitio">Id Sitio:</string>
+    <string name="idUsuario">Id De Usuario:</string>
+    <string name="descripcion">Descripcion:</string>
+    <string name="nombreSitio">Nombre:</string>
+    <string name="precioMax">Precio Minimo:</string>
+    <string name="precioMin">Precio Max:</string>
+
+
 </resources>
