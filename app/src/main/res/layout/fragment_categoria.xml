@@ -1,20 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CategoriaFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/main_editText"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:hint="Categorias Layout" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:background="@drawable/gps"
+                android:textAlignment="center"
+                android:text="Categorias"
+                android:textSize="24sp"
+                android:gravity="bottom"
+                android:textColor="@color/colorFlower"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+
+
+                <Button
+                    android:id="@+id/btn_restaurantes"
+                    android:layout_width="190dp"
+                    android:layout_height="160dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorGrapeFruit"
+                    android:orientation="vertical"
+                    android:src="@drawable/ic_restaurante"
+                    android:drawableTop  ="@drawable/ic_restaurante"
+                    android:text="@string/restaurante"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    android:tint="@color/colorWhiteC">
+
+
+                </Button>
+
+                <!--BARES-->
+
+                <Button
+                    android:id="@+id/btn_bares"
+                    android:layout_width="190dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorMint"
+                    android:orientation="vertical"
+
+                    android:drawableTop  ="@drawable/ic_beer"
+                    android:text="Bares"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    android:tint="@color/colorWhiteC">
+
+
+                </Button>
+
+
+
+            </LinearLayout>
+
+
+            <!--SEGUNDA FILA-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                >
+                <!--Parques-->
+                <Button
+                    android:id="@+id/btn_parques"
+                    android:layout_width="190dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorYellow"
+                    android:orientation="vertical"
+                    android:layout_marginRight="5dp"
+                    android:drawableTop  ="@drawable/ic_parque"
+                    android:text="Parques"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    android:tint="@color/colorWhiteC">
+
+
+                </Button>
+
+
+                <!--Entretenimiento-->
+
+                <Button
+                    android:id="@+id/btn_entretenimiento"
+                    android:layout_width="190dp"
+                    android:layout_height="160dp"
+
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorLavander"
+                    android:orientation="vertical"
+
+                    android:drawableTop  ="@drawable/ic_bowling"
+                    android:text="Entretenimiento"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    android:tint="@color/colorWhite">
+
+
+                </Button>
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>

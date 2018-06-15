@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.veronica.imgo.sitioInsertActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Nuevo Sitio"
+            android:textAlignment="center"
+            android:textColor="@color/colorBitterSweet"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/editPrecioMax"
+                        android:layout_width="160dp"
+                        android:layout_height="23dp"
+                        android:layout_marginBottom="112dp"
+                        android:layout_marginEnd="48dp"
+                        android:layout_marginStart="47dp"
+                        android:layout_marginTop="16dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/precioMax"
+                        app:layout_constraintTop_toBottomOf="@+id/editPrecioMin"
+                        tools:ignore="MissingConstraints" />
+
+                    <EditText
+                        android:id="@+id/editNombreSitio"
+                        android:layout_width="178dp"
+                        android:layout_height="31dp"
+                        android:layout_marginBottom="28dp"
+                        android:layout_marginEnd="56dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginTop="22dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toTopOf="@+id/editDescripcion"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/nombre"
+                        app:layout_constraintTop_toBottomOf="@+id/editIdSitio"
+                        tools:ignore="MissingConstraints" />
+
+                    <EditText
+                        android:id="@+id/editIdSitio"
+                        android:layout_width="197dp"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="24dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginStart="57dp"
+                        android:layout_marginTop="12dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toTopOf="@+id/editNombreSitio"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/idSit"
+                        app:layout_constraintTop_toBottomOf="@+id/editIdUsuario"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/idUser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="33dp"
+                        android:layout_marginStart="44dp"
+                        android:layout_marginTop="32dp"
+                        android:text="IdUsuario"
+                        app:layout_constraintBottom_toTopOf="@+id/idSit"
+                        app:layout_constraintEnd_toStartOf="@+id/editIdUsuario"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/idSit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="36dp"
+                        android:text="IdSitio"
+                        app:layout_constraintBottom_toTopOf="@+id/nombre"
+                        app:layout_constraintEnd_toStartOf="@+id/editIdSitio"
+                        app:layout_constraintHorizontal_bias="0.467"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/idUser"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/descripcion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="45dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="40dp"
+                        android:text="Descripcion"
+                        app:layout_constraintBottom_toTopOf="@+id/precioMin"
+                        app:layout_constraintEnd_toStartOf="@+id/editDescripcion"
+                        app:layout_constraintHorizontal_bias="0.521"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/nombre"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/precioMin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="44dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="45dp"
+                        android:text="Precio Minimo"
+                        app:layout_constraintBottom_toTopOf="@+id/precioMax"
+                        app:layout_constraintEnd_toStartOf="@+id/editPrecioMin"
+                        app:layout_constraintHorizontal_bias="0.444"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/descripcion"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/precioMax"
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:layout_marginBottom="75dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="44dp"
+                        android:text="Precio Maximo"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/editPrecioMax"
+                        app:layout_constraintHorizontal_bias="0.417"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/precioMin"
+                        tools:ignore="MissingConstraints" />
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="32dp"
+                        android:onClick="insertarSitio"
+                        android:text="@string/insertar"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.971"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editPrecioMax"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:ignore="MissingConstraints,OnClick" />
+
+
+                    <EditText
+                        android:id="@+id/editDescripcion"
+                        android:layout_width="178dp"
+                        android:layout_height="31dp"
+                        android:layout_marginBottom="28dp"
+                        android:layout_marginEnd="48dp"
+                        android:layout_marginStart="41dp"
+                        android:layout_marginTop="15dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toTopOf="@+id/editPrecioMin"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/descripcion"
+                        app:layout_constraintTop_toBottomOf="@+id/editNombreSitio"
+                        tools:ignore="MissingConstraints" />
+
+                    <EditText
+                        android:id="@+id/editPrecioMin"
+                        android:layout_width="160dp"
+                        android:layout_height="23dp"
+                        android:layout_marginBottom="28dp"
+                        android:layout_marginEnd="56dp"
+                        android:layout_marginStart="43dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintBottom_toTopOf="@+id/editPrecioMax"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/precioMin"
+                        app:layout_constraintTop_toBottomOf="@+id/editDescripcion"
+                        tools:ignore="MissingConstraints" />
+
+                    <EditText
+                        android:id="@+id/editIdUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:inputType="number"
+                        app:layout_constraintBottom_toTopOf="@+id/editIdSitio"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/idUser"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/nombre"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="39dp"
+                        android:layout_marginEnd="25dp"
+                        android:layout_marginStart="44dp"
+                        android:layout_marginTop="20dp"
+                        android:text="Nombre Sitio"
+                        app:layout_constraintBottom_toTopOf="@+id/descripcion"
+                        app:layout_constraintEnd_toStartOf="@+id/editNombreSitio"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/idSit" />
+
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
