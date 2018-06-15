@@ -165,6 +165,7 @@ public class ControlBD {
         cerrar();
         return listaSitioPrecio;
     }
+  //  public ArrayList<Sitio>
 
     public Sitio consultarSitioPrecio(Integer idSitio){
         String[] id= {String.valueOf(idSitio)};
