@@ -62,12 +62,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void handleSignInResult(GoogleSignInResult result) {
         if(result.isSuccess()){
-            GoogleSignInAccount account = result.getSignInAccount();
-            if (account.getEmail()=="cristian74425@gmail.com"){
-                goMainScreen();
-            }else {
-                usuarioNormal();
-            }
+           goMainScreen();
+
 
         }else {
             Toast.makeText(this,"No se pudo iniciar", Toast.LENGTH_SHORT).show();

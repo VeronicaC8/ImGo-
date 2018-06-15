@@ -40,7 +40,7 @@ public class PrecioFragment extends Fragment {
 
     public PrecioFragment() {
         // Required empty public constructor
-    }   /*
+    }
     ControlBD helper;
     private View vista;
     List sitios;
@@ -67,7 +67,8 @@ public class PrecioFragment extends Fragment {
         listaSitio=new ArrayList<>();
         recyclerSitio=view.findViewById(R.id.recyclerId);
         recyclerSitio.setLayoutManager(new LinearLayoutManager(getContext()));
-        obtenerSitio();
+        editPrecio=(EditText) vista.findViewById(R.id.editPrecio);
+
 
         AdaptadorList adapter=new AdaptadorList(listaSitio);
         recyclerSitio.setAdapter(adapter);
@@ -79,46 +80,29 @@ public class PrecioFragment extends Fragment {
                                        }
                                    }
         );
-        // ArrayAdapter<String> adaptador = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,sitios);
-        // listViewFav.setAdapter(adaptador);
+        btnPrecio= vista.findViewById(R.id.botonPrecio);
+        btnPrecio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(),"Presionado",Toast.LENGTH_LONG).show();
+                obtenerSitio(editPrecio.getText().toString());
+            }
+        });
         return view;
     }
 
     private List obtenerSitio(String precioDeseado) {
-
-        String tabla = "sitio";
         helper.abrir();
-        Sitio sitio = null;//CAMBIAR A LA ENTIDAD CORRESPONDIENTE
-
-       //------ //Lista = new ArrayList<>();
-
-     //   Cursor cursor = helper.db.rawQuery("SELECT * FROM " +tabla, null);
-
-        while (cursor.moveToNext()) {
-            sitio = new Sitio();//CAMBIAR A LA ENTIDAD CORRESPONDIENTE
-            sitio.setNombreSitio(cursor.getString(0));
-            sitio.setDescripcion(cursor.getString(1));
-
-            listaSitio.add(sitio);
-        }
 
 
-        final String[]camposSitio=new String[]{"idSitio","idCategoria","descripcion","nombreSitio","precioMax","precioMin"};
-        ArrayList<Sitio> listaSitioPrecio= new ArrayList<>();
-        List listaSitioPre= new ArrayList();
-        String[] precioDe={precioDeseado,precioDeseado};   //precioMax","precioMin
-        helper.abrir();
+        String[]camposSitio=new String[]{"idSitio","idCategoria","descripcion","nombreSitio","precioMax","precioMin"};
+        String[] precioDe={precioDeseado,precioDeseado};
+        Sitio sitio=null;
         Cursor cursor=helper.db.query("sitio",camposSitio,"precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
-        //    Cursor cursor=db.query("sitio",camposSitio,"idSitio WHERE precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
         while (cursor.moveToNext()){
-            Sitio sitio=new Sitio();
-            //   sitio.setIdSitio(cursor.getInt(0));
-            //   sitio.setIdUsuario(cursor.getInt(1));
-            //   sitio.setDescripcion(cursor.getString(2));
+                 sitio=new Sitio();
             sitio.setNombreSitio(cursor.getString(3));
-            //   sitio.setPrecioMax(cursor.getFloat(4));
-            //   sitio.setPrecioMin(cursor.getFloat(5));
-            listaSitioPrecio.add(sitio);
+            listaSitio.add(sitio);
         }
 
         return (listaSitio);
@@ -128,15 +112,10 @@ public class PrecioFragment extends Fragment {
 
 
 
-*/
 
 
 
-
-
-
-
-
+/*
     ControlBD helper;
     private View vista;
     Context context;
@@ -177,8 +156,6 @@ public class PrecioFragment extends Fragment {
 
         return vista;
     }
-
-
-
+*/
 
 }
