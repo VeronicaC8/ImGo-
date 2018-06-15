@@ -1,5 +1,6 @@
 package com.example.veronica.imgo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -41,20 +42,21 @@ public class PrecioFragment extends Fragment {
     public PrecioFragment() {
         // Required empty public constructor
     }
+    private DetalleSitioFragment.OnFragmentInteractionListener mListener;
     ControlBD helper;
-    private View vista;
+
     List sitios;
+
     ArrayList<String> Lista;
     ArrayList<Sitio> listaSitio;
     RecyclerView recyclerSitio;
+    Activity activity;
+    IComunicaFragment interfaceComunicaFragments;
 
     Context context;
-    ListView listaSitioPrecio;
-    ArrayList<Sitio> Lista1;
     TextView editPrecio, editNombreSitio;
     Button btnPrecio;
     //Bloud
-
 
     @Nullable
     @Override
@@ -67,25 +69,25 @@ public class PrecioFragment extends Fragment {
         listaSitio=new ArrayList<>();
         recyclerSitio=view.findViewById(R.id.recyclerId);
         recyclerSitio.setLayoutManager(new LinearLayoutManager(getContext()));
-        editPrecio=(EditText) vista.findViewById(R.id.editPrecio);
+        editPrecio=(EditText) view.findViewById(R.id.editPrecio);
 
+       // obtenerSitio(editPrecio.getText().toString());
 
-        AdaptadorList adapter=new AdaptadorList(listaSitio);
-        recyclerSitio.setAdapter(adapter);
-
-        adapter.setOnClickListener(new View.OnClickListener(){
-                                       @Override
-                                       public void onClick(View view){
-
-                                       }
-                                   }
-        );
-        btnPrecio= vista.findViewById(R.id.botonPrecio);
+        btnPrecio= view.findViewById(R.id.botonPrecio);
         btnPrecio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Presionado",Toast.LENGTH_LONG).show();
-                obtenerSitio(editPrecio.getText().toString());
+
+                AdaptadorList adapter=new AdaptadorList((ArrayList<Sitio>) obtenerSitio(editPrecio.getText().toString()));
+                recyclerSitio.setAdapter(adapter);
+                adapter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        interfaceComunicaFragments.enviarSitio(listaSitio.get(recyclerSitio.getChildAdapterPosition(view)));
+                    }
+                });
             }
         });
         return view;
@@ -94,11 +96,10 @@ public class PrecioFragment extends Fragment {
     private List obtenerSitio(String precioDeseado) {
         helper.abrir();
 
-
         String[]camposSitio=new String[]{"idSitio","idCategoria","descripcion","nombreSitio","precioMax","precioMin"};
         String[] precioDe={precioDeseado,precioDeseado};
         Sitio sitio=null;
-        Cursor cursor=helper.db.query("sitio",camposSitio,"precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
+        Cursor cursor=helper.db.query("sitio",camposSitio,"precioMin <= ? AND precioMax >= ? ",precioDe,null,null,null);
         while (cursor.moveToNext()){
                  sitio=new Sitio();
             sitio.setNombreSitio(cursor.getString(3));
@@ -108,12 +109,26 @@ public class PrecioFragment extends Fragment {
         return (listaSitio);
     }
 
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
+        if(context instanceof Activity){
+            this.activity= (Activity) context;
+            interfaceComunicaFragments= (IComunicaFragment) this.activity;
+        }
 
-
-
-
-
+        if (context instanceof DetalleSitioFragment.OnFragmentInteractionListener) {
+            mListener = (DetalleSitioFragment.OnFragmentInteractionListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
 
 /*
     ControlBD helper;
