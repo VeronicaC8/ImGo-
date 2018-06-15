@@ -1,6 +1,5 @@
 package com.example.veronica.imgo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -27,7 +26,7 @@ public class FavoritosFragment extends Fragment {
     public FavoritosFragment() {
         // Required empty public constructor
     }
-    private DetalleSitioFragment.OnFragmentInteractionListener mListener;
+
     ControlBD helper;
 
     List sitios;
@@ -35,8 +34,7 @@ public class FavoritosFragment extends Fragment {
     ArrayList<String> Lista;
     ArrayList<Sitio> listaSitio;
     RecyclerView recyclerSitio;
-    Activity activity;
-    IComunicaFragment interfaceComunicaFragments;
+
 
     @Nullable
     @Override
@@ -54,13 +52,13 @@ public class FavoritosFragment extends Fragment {
         AdaptadorList adapter=new AdaptadorList(listaSitio);
         recyclerSitio.setAdapter(adapter);
 
-        adapter.setOnClickListener(new View.OnClickListener() {
+     adapter.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
+                    public void onClick(View view){
 
-                interfaceComunicaFragments.enviarSitio(listaSitio.get(recyclerSitio.getChildAdapterPosition(view)));
             }
-        });
+        }
+        );
         // ArrayAdapter<String> adaptador = new ArrayAdapter(getActivity(),android.R.layout.simple_list_item_1,sitios);
         // listViewFav.setAdapter(adaptador);
         return view;
@@ -87,27 +85,6 @@ public class FavoritosFragment extends Fragment {
         return (listaSitio);
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-        if(context instanceof Activity){
-            this.activity= (Activity) context;
-            interfaceComunicaFragments= (IComunicaFragment) this.activity;
-        }
-
-        if (context instanceof DetalleSitioFragment.OnFragmentInteractionListener) {
-            mListener = (DetalleSitioFragment.OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
 
   /*  public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -130,10 +107,7 @@ public class FavoritosFragment extends Fragment {
                 Toast.LENGTH_SHORT).show();
     }*/
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
+
     
 
 

@@ -1,6 +1,5 @@
 package com.example.veronica.imgo;
 
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -11,14 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
-import com.example.veronica.imgo.Sitio;
-import com.example.veronica.imgo.DetalleSitioFragment;
-import com.example.veronica.imgo.FavoritosFragment;
-import com.example.veronica.imgo.IComunicaFragment;
-import com.example.veronica.imgo.Utilidades;
 
-public class MainActivity extends AppCompatActivity implements FavoritosFragment.OnFragmentInteractionListener,
-        DetalleSitioFragment.OnFragmentInteractionListener, IComunicaFragment{
+public class MainActivity extends AppCompatActivity{
 
     int idUsuarioPrueba=1;
     ControlBD BDhelper;
@@ -26,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements FavoritosFragment
     //Declaracion de botones
     private ActionBar toolbar;
    FavoritosFragment listaSitiosF;
-   DetalleSitioFragment detalleSitio;
+  // DetalleSitioFragment detalleSitio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -105,19 +98,7 @@ public class MainActivity extends AppCompatActivity implements FavoritosFragment
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         fragmentTransaction.commit();
     }
-    public void enviarSitio(Sitio sitio){
-        detalleSitio=new DetalleSitioFragment();
-        Bundle bundleEnvio=new Bundle();
-        bundleEnvio.putSerializable("objeto",sitio);
-        detalleSitio.setArguments(bundleEnvio);
 
-        //cargar fragment en ela activity
-        getSupportFragmentManager().beginTransaction().
-                replace(R.id.container,detalleSitio).
-                addToBackStack(null).addToBackStack(null).commit();
-    }
-    public void onFragmentInteraction(Uri uri) {
 
-    }
 
 }

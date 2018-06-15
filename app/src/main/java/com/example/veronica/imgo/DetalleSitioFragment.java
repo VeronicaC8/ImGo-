@@ -7,8 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 
 /**
@@ -30,9 +28,6 @@ public class DetalleSitioFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
-    TextView textDescripcion;
-    ImageView imagenDetalle;
 
     public DetalleSitioFragment() {
         // Required empty public constructor
@@ -68,25 +63,9 @@ public class DetalleSitioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View vista=inflater.inflate(R.layout.fragment_detalle_sitio, container, false);
-
-        textDescripcion= (TextView) vista.findViewById(R.id.descripcionId);
-        imagenDetalle= (ImageView) vista.findViewById(R.id.imagenDetalleId);
-
-        Bundle objetoSitio=getArguments();
-        Sitio sitio=null;
-        if (objetoSitio != null) {
-            sitio= ( Sitio) objetoSitio.getSerializable("objeto");
-            imagenDetalle.setImageResource(sitio.getImagen());
-            textDescripcion.setText(sitio.getDescripcion());
-
-
-        }
-
-        return vista;
         // Inflate the layout for this fragment
-       }
+        return inflater.inflate(R.layout.fragment_detalle_sitio, container, false);
+    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

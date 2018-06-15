@@ -1,24 +1,13 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.veronica.imgo.DetalleSitioFragment"
-    android:orientation="vertical">
+    tools:context="com.example.veronica.imgo.DetalleSitioFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/imagenDetalleId"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:src="@drawable/ic_beer"
-        android:scaleType="fitXY"
-        android:layout_marginBottom="10dp"/>
-
     <TextView
-        android:id="@+id/descripcionId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Descripcion:"/>
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
-
-</LinearLayout>
+</FrameLayout>
