@@ -4,17 +4,15 @@ public class PuntuacionSitio {
     private int idPuntuacionSitio;
     private int idPuntuacion;
     private int idSitio;
-    private int idUsuario;
     private String resena;
 
     public PuntuacionSitio() {
     }
 
-    public PuntuacionSitio(int idPuntuacionSitio, int idPuntuacion, int idSitio, int idUsuario, String resena) {
+    public PuntuacionSitio(int idPuntuacionSitio, int idPuntuacion, int idSitio, String resena) {
         this.idPuntuacionSitio = idPuntuacionSitio;
         this.idPuntuacion = idPuntuacion;
         this.idSitio = idSitio;
-        this.idUsuario = idUsuario;
         this.resena = resena;
     }
 
@@ -40,14 +38,6 @@ public class PuntuacionSitio {
 
     public void setIdSitio(int idSitio) {
         this.idSitio = idSitio;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public String getResena() {

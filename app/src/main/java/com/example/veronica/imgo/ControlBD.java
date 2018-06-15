@@ -3,9 +3,14 @@ package com.example.veronica.imgo;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Oscar on 10/06/2018.
@@ -19,7 +24,7 @@ public class ControlBD {
     private static final String[]camposUbicacion=new String[]{"idUbicacion","idSitio","direccion","coordenadaX","coordenadaY"};
     private static final String[]camposSitio=new String[]{"idSitio","idUsuario","descripcion","nombreSitio","precioMax","precioMin"};
     private static final String[]camposPuntuacion=new String[]{"idPuntuacion","descripcionPuntuacion"};
-    private static final String[]camposPuntuacionSitio=new String[]{"idPuntuacionSitio","idPuntuacion","idSitio","idUsuario","resena"};
+    private static final String[]camposPuntuacionSitio=new String[]{"idPuntuacionSitio","idPuntuacion","idSitio","resena"};
 
 
     private final Context context;
@@ -56,7 +61,8 @@ public class ControlBD {
                 db.execSQL("CREATE TABLE ubicacion(idUbicacion INTEGER NOT NULL PRIMARY KEY, idSitio INTEGER NOT NULL, direccion VARCHAR(50) NOT NULL, coordenadaX FLOAT NOT NULL,coordenadaY FLOAT NOT NULL); ");
                 db.execSQL("CREATE TABLE sitio(idSitio INTEGER NOT NULL PRIMARY KEY, idUsuario INTEGER NOT NULL, descripcion VARCHAR(100) NOT NULL, nombreSitio VARCHAR(20) NOT NULL, precioMax FLOAT NOT NULL, precioMin FLOAT NOT NULL); ");
                 db.execSQL("CREATE TABLE puntuacion(idPuntuacion INTEGER NOT NULL PRIMARY KEY, descripcionPuntuacion VARCHAR(10) NOT NULL); ");
-                db.execSQL("CREATE TABLE puntuacionSitio(idPuntuacionSitio INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, idPuntuacion INTEGER NOT NULL, idSitio INTEGER NOT NULL, idUsuario INTEGER NOT NULL, resena VARCHAR(50) NOT NULL); ");
+                db.execSQL("CREATE TABLE puntuacionSitio(idPuntuacionSitio INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, idPuntuacion INTEGER NOT NULL, idSitio INTEGER NOT NULL, resena VARCHAR(50) NOT NULL); ");
+                db.execSQL("INSERT INTO sitio(idSitio, idUsuario, descripcion, nombreSitio, precioMax, precioMin) values(01,1,'Pizzeria de especialidad, ingredientes seleccionados, telefono a domicilio 2275-5555','Pizza Hut',15,4);");
 
             }catch (SQLException e){
                 e.printStackTrace();
@@ -136,6 +142,47 @@ public class ControlBD {
             regInsertados=regInsertados+contador;
         }
         return regInsertados;
+    }
+
+
+    public ArrayList<Sitio> getSitioPrecio(Float precioDeseado){
+        ArrayList<Sitio> listaSitioPrecio= new ArrayList<>();
+        List listaSitioPre= new ArrayList();
+        String[] precioDe={String.valueOf(precioDeseado),String.valueOf(precioDeseado)};   //precioMax","precioMin
+        abrir();
+        Cursor cursor=db.query("sitio",camposSitio,"precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
+        //    Cursor cursor=db.query("sitio",camposSitio,"idSitio WHERE precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
+        while (cursor.moveToNext()){
+            Sitio sitio=new Sitio();
+            //   sitio.setIdSitio(cursor.getInt(0));
+            //   sitio.setIdUsuario(cursor.getInt(1));
+            //   sitio.setDescripcion(cursor.getString(2));
+            sitio.setNombreSitio(cursor.getString(3));
+            //   sitio.setPrecioMax(cursor.getFloat(4));
+            //   sitio.setPrecioMin(cursor.getFloat(5));
+            listaSitioPrecio.add(sitio);
+        }
+        cerrar();
+        return listaSitioPrecio;
+    }
+
+    public Sitio consultarSitioPrecio(Integer idSitio){
+        String[] id= {String.valueOf(idSitio)};
+        Sitio sitio=null;
+        abrir();
+        Cursor cursor=db.query("sitio",camposSitio,"idSitio = ? ",id,null,null,null);
+
+        if (cursor.moveToFirst()){
+            sitio=new Sitio();
+            sitio.setIdSitio(cursor.getInt(0));
+          //  sitio.setIdUsuario(cursor.getInt(1));
+            sitio.setDescripcion(cursor.getString(2));
+            sitio.setNombreSitio(cursor.getString(3));
+            sitio.setPrecioMax(cursor.getFloat(4));
+            sitio.setPrecioMin(cursor.getFloat(5));
+        }
+        cerrar();
+        return sitio;
     }
 
 
