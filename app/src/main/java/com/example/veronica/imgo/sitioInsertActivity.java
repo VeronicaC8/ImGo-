@@ -42,14 +42,17 @@ public class sitioInsertActivity extends AppCompatActivity {
                 Sitio sitio=new Sitio();
                 sitio.setIdSitio(idSitio);
                 sitio.setIdCategoria(idCategoria);
+
+        //        sitio.setIdUsuario(idUsuario);
+
                 sitio.setDescripcion(descripcion);
                 sitio.setNombreSitio(nombreSitio);
                 sitio.setPrecioMax(precioMax);
                 sitio.setPrecioMin(precioMin);
                 helper.abrir();
-                regInsertados=helper.insertar(sitio);
+        //        regInsertados=helper.insertar(sitio);
                 helper.cerrar();
-                Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        //        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
     }
     public void limpiarTexto(View v) {
         editIdSitio.setText("");

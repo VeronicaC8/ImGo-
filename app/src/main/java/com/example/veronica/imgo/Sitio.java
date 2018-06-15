@@ -7,23 +7,37 @@ public class Sitio {
     private String nombreSitio;
     private float precioMax;
     private float precioMin;
+    private String imagen;
 
     public Sitio() {
     }
 
+
     public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin) {
+
+
         this.idSitio = idSitio;
         this.idCategoria = idCategoria;
         this.descripcion = descripcion;
         this.nombreSitio = nombreSitio;
         this.precioMax = precioMax;
         this.precioMin = precioMin;
+        this.imagen = imagen;
     }
+
 
     public int getIdSitio() {
         return idSitio;
     }
 
+
+    public int getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
 
     public String getDescripcion() {
         return descripcion;
@@ -45,7 +59,6 @@ public class Sitio {
         this.idSitio = idSitio;
     }
 
-
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
@@ -63,13 +76,18 @@ public class Sitio {
     }
 
 
-    public int getIdCategoria() {
-        return idCategoria;
+
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setIdCategoria(int idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
-
+    @Override
+    public String toString() {
+        return nombreSitio;
+    }
 }
+
