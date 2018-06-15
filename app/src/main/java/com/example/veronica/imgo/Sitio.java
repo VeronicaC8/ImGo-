@@ -3,6 +3,7 @@ package com.example.veronica.imgo;
 public class Sitio {
     private int idSitio;
     private int idUsuario;
+    private int imagenId;
     private String descripcion;
     private String nombreSitio;
     private float precioMax;
@@ -11,9 +12,10 @@ public class Sitio {
     public Sitio() {
     }
 
-    public Sitio(int idSitio, int idUsuario, String descripcion, String nombreSitio, float precioMax, float precioMin) {
+    public Sitio(int idSitio, int idUsuario, int imagenId, String descripcion, String nombreSitio, float precioMax, float precioMin) {
         this.idSitio = idSitio;
         this.idUsuario = idUsuario;
+        this.imagenId = imagenId;
         this.descripcion = descripcion;
         this.nombreSitio = nombreSitio;
         this.precioMax = precioMax;
@@ -68,4 +70,11 @@ public class Sitio {
         this.precioMin = precioMin;
     }
 
+    public int getImagenId() {
+        return imagenId;
+    }
+
+    public void setImagenId(int imagenId) {
+        this.imagenId = imagenId;
+    }
 }
