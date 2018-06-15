@@ -1,22 +1,21 @@
 package com.example.veronica.imgo;
 
-public class Sitio {
+import java.io.Serializable;
+
+public class Sitio implements Serializable{
     private int idSitio;
     private int idCategoria;
     private String descripcion;
     private String nombreSitio;
     private float precioMax;
     private float precioMin;
-    private String imagen;
+    private int imagen;
 
     public Sitio() {
     }
 
 
-
-    public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin) {
-
-
+    public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin, int imagen) {
         this.idSitio = idSitio;
         this.idCategoria = idCategoria;
         this.descripcion = descripcion;
@@ -78,17 +77,17 @@ public class Sitio {
 
 
 
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
     @Override
     public String toString() {
         return nombreSitio;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
     }
 }
 
