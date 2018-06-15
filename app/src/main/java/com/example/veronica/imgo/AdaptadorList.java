@@ -43,7 +43,7 @@ public class AdaptadorList extends RecyclerView.Adapter<AdaptadorList.Personajes
     public void onBindViewHolder(PersonajesViewHolder holder, int position) {
         holder.txtNombre.setText(listaSitio.get(position).getNombreSitio());
         holder.txtInformacion.setText(listaSitio.get(position).getDescripcion());
-        holder.foto.setImageResource(listaSitio.get(position).getImagenId());
+       // holder.foto.setImageResource(listaSitio.get(position).getImagen());
     }
 
     @Override
