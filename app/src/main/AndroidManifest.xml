@@ -17,6 +17,11 @@
             </intent-filter>
         </activity>
         <activity
+
+            android:name=".PrecioDetalleActivity"
+            android:label="@string/title_activity_precio_detalle"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
             android:name=".categoriaBaresActivity"
             android:theme="@style/RestaurantesTheme" />
         <activity
@@ -36,6 +41,10 @@
         <activity android:name=".sitioEditActivity" />
         <activity android:name=".sitioDeleteActivity" />
         <activity android:name=".sitioListActivity"></activity>
+
+
+
+        <activity android:name=".LoginActivity" />
 
 
         <activity android:name=".Main2Activity"></activity>
