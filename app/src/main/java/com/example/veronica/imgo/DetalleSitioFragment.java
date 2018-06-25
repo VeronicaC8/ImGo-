@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 
@@ -31,8 +32,11 @@ public class DetalleSitioFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    TextView textNombre;
     TextView textDescripcion;
     ImageView imagenDetalle;
+    RatingBar ratingBar;
+    ControlBD helper;
 
     public DetalleSitioFragment() {
         // Required empty public constructor
@@ -71,18 +75,30 @@ public class DetalleSitioFragment extends Fragment {
 
         View vista=inflater.inflate(R.layout.fragment_detalle_sitio, container, false);
 
+        textNombre= (TextView) vista.findViewById(R.id.nombreId);
         textDescripcion= (TextView) vista.findViewById(R.id.descripcionId);
         imagenDetalle= (ImageView) vista.findViewById(R.id.imagenDetalleId);
+        ratingBar=(RatingBar) vista.findViewById(R.id.rb_cal);
 
         Bundle objetoSitio=getArguments();
         Sitio sitio=null;
         if (objetoSitio != null) {
             sitio= ( Sitio) objetoSitio.getSerializable("objeto");
             imagenDetalle.setImageResource(sitio.getImagen());
+            textNombre.setText(sitio.getNombreSitio());
             textDescripcion.setText(sitio.getDescripcion());
 
 
         }
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+
+
+            }
+
+        });
 
         return vista;
         // Inflate the layout for this fragment
