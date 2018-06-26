@@ -14,7 +14,7 @@
         android:layout_marginBottom="89dp"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="Descripcion"
-        android:textColor="?colorPrimary" />
+        android:textColor="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/tv_descripcion"
@@ -32,7 +32,7 @@
         android:layout_height="30dp"
         android:layout_marginBottom="8dp"
         android:text="Rango de precios:"
-        android:textColor="?colorPrimary" />
+        android:textColor="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/tv_precioMax"

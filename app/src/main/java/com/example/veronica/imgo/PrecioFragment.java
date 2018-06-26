@@ -62,7 +62,7 @@ public class PrecioFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view= inflater.inflate(R.layout.fragment_precio,container,false);
+        final View view= inflater.inflate(R.layout.fragment_precio,container,false);
         // listViewFav= (ListView) v.findViewById(R.id.listViewFav);
 
         helper  =new ControlBD(getActivity());
@@ -78,7 +78,8 @@ public class PrecioFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(),"Presionado",Toast.LENGTH_LONG).show();
-
+                view.requestLayout();
+                view.clearAnimation();
                 AdaptadorList adapter=new AdaptadorList((ArrayList<Sitio>) obtenerSitio(editPrecio.getText().toString()));
                 recyclerSitio.setAdapter(adapter);
                 adapter.setOnClickListener(new View.OnClickListener() {
