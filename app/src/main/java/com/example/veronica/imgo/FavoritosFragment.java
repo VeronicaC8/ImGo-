@@ -68,7 +68,7 @@ public class FavoritosFragment extends Fragment {
 
     private List obtenerSitio() {
 
-        String tabla = "categoria";
+        String tabla = "sitio";
         helper.abrir();
         Sitio sitio = null;//CAMBIAR A LA ENTIDAD CORRESPONDIENTE
 
@@ -78,8 +78,8 @@ public class FavoritosFragment extends Fragment {
 
         while (cursor.moveToNext()) {
             sitio = new Sitio();//CAMBIAR A LA ENTIDAD CORRESPONDIENTE
-            sitio.setNombreSitio(cursor.getString(0));
-            sitio.setDescripcion(cursor.getString(1));
+            sitio.setNombreSitio(cursor.getString(2));
+            sitio.setDescripcion(cursor.getString(3));
 
             listaSitio.add(sitio);
         }
