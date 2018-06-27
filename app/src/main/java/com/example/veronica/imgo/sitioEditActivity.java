@@ -38,53 +38,65 @@ public class sitioEditActivity extends AppCompatActivity {
 
 
     }
+    public void insertarSitio(View v) {
 
-    public void actualizarSitio(View v) {
         Integer idSitio = Integer.valueOf(editIdSitio.getText().toString());
         Integer idCategoria = Integer.valueOf(editIdCategoria.getText().toString());
 
         String descripcion = editDescripcion.getText().toString();
         String nombreSitio = editNombreSitio.getText().toString();
-        Integer precioMin = Integer.valueOf(editPrecioMin.getText().toString());
-        Integer precioMax = Integer.valueOf(editPrecioMax.getText().toString());
+        Float precioMin = Float.valueOf(editPrecioMin.getText().toString());
+        Float precioMax = Float.valueOf(editPrecioMax.getText().toString());
         String direccion = editDireccion.getText().toString();
         Float latitud = Float.valueOf(editLatitud.getText().toString());
         Float longitud = Float.valueOf(editLongitud.getText().toString());
         String regInsertados;
         String regInsertadoUbicacion;
 
+        if(idCategoria==1||idCategoria==2||idCategoria==3||idCategoria==4||idCategoria==5){
 
-        Sitio sitio = new Sitio();
-        sitio.setIdSitio(idSitio);
-        sitio.setIdCategoria(idCategoria);
-        sitio.setDescripcion(descripcion);
-        sitio.setNombreSitio(nombreSitio);
-        sitio.setPrecioMax(precioMax);
-        sitio.setPrecioMin(precioMin);
+            if(precioMin<=precioMax){
+                Sitio sitio = new Sitio();
+                sitio.setIdSitio(idSitio);
+                sitio.setIdCategoria(idCategoria);
+                sitio.setDescripcion(descripcion);
+                sitio.setNombreSitio(nombreSitio);
+                sitio.setPrecioMax(precioMax);
+                sitio.setPrecioMin(precioMin);
 
-        Ubicacion ubicacion = new Ubicacion();
-        ubicacion.setIdUbicacion(idSitio);
-        ubicacion.setIdSitio(idSitio);
-        ubicacion.setDireccion(direccion);
-        ubicacion.setCoordenadaX(longitud);
-        ubicacion.setCoordenadaY(latitud);
+                Ubicacion ubicacion = new Ubicacion();
+                ubicacion.setIdUbicacion(idSitio);
+                ubicacion.setIdSitio(idSitio);
+                ubicacion.setDireccion(direccion);
+                ubicacion.setCoordenadaX(longitud);
+                ubicacion.setCoordenadaY(latitud);
 
-        helper.abrir();
-        regInsertados = helper.actualizar(sitio);
-        regInsertadoUbicacion = helper.actualizar(ubicacion);
+                helper.abrir();
+                regInsertados = helper.actualizar(sitio);
+                regInsertadoUbicacion = helper.actualizar(ubicacion);
 
-        helper.cerrar();
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, regInsertadoUbicacion, Toast.LENGTH_SHORT).show();
+                helper.cerrar();
+                Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, regInsertadoUbicacion, Toast.LENGTH_SHORT).show();
 
-        //       editIdSitio.setText("");
-        //       editIdCategoria.setText("");
-        //       editDescripcion.setText("");
-        //       editNombreSitio.setText("");
-        //       editPrecioMax.setText("");
-        //       editPrecioMin.setText("");
-        //       editDireccion.setText("");
+                //       editIdSitio.setText("");
+                //       editIdCategoria.setText("");
+                //       editDescripcion.setText("");
+                //       editNombreSitio.setText("");
+                //       editPrecioMax.setText("");
+                //       editPrecioMin.setText("");
+                //       editDireccion.setText("");
+                //       editLatitud.setText("");
+                //       editLongitud.setText("");
 
+
+            }else {
+                Toast.makeText(this, "Precio Maximo debe ser mayor", Toast.LENGTH_SHORT).show();
+            }
+
+        }else {
+            Toast.makeText(this, "ID Categoria no valido", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

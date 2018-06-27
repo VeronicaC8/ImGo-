@@ -9,13 +9,13 @@ public class Sitio implements Serializable{
     private String nombreSitio;
     private float precioMax;
     private float precioMin;
-    private int imagen;
+    private String imagen;
 
     public Sitio() {
     }
 
 
-    public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin, int imagen) {
+    public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin, String imagen) {
         this.idSitio = idSitio;
         this.idCategoria = idCategoria;
         this.descripcion = descripcion;
@@ -75,20 +75,20 @@ public class Sitio implements Serializable{
         this.precioMin = precioMin;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
 
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
     @Override
     public String toString() {
         return nombreSitio;
     }
 
-    public int getImagen() {
-        return imagen;
-    }
 
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
-    }
 }
 
 

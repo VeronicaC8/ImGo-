@@ -7,22 +7,22 @@
 
     tools:context="com.example.veronica.imgo.sitioInsertActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nuevo Sitio"
-        android:textAlignment="center"
-        android:textColor="@color/colorBitterSweet"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nuevo Sitio"
+                android:textAlignment="center"
+                android:textColor="@color/colorBitterSweet"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                />
 
 
             <TextView

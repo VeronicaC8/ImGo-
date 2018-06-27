@@ -84,7 +84,7 @@ public class DetalleSitioFragment extends Fragment {
         Sitio sitio=null;
         if (objetoSitio != null) {
             sitio= ( Sitio) objetoSitio.getSerializable("objeto");
-            imagenDetalle.setImageResource(sitio.getImagen());
+            //imagenDetalle.setImageResource(sitio.getImagen());
             textNombre.setText(sitio.getNombreSitio());
             textDescripcion.setText(sitio.getDescripcion());
 
