@@ -22,15 +22,16 @@
             </intent-filter>
         </activity>
         <activity
-
             android:name=".PrecioDetalleActivity"
             android:label="@string/title_activity_precio_detalle"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
-            android:name=".categoriaBaresActivity"
-            android:theme="@style/RestaurantesTheme" />
         <activity
             android:name=".categoriaRestaurantesActivity"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".categoriaBaresActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".categoriaParquesActivity"
@@ -41,15 +42,11 @@
             />
         </activity>
         <activity android:name=".CategoriaActivity" />
-
         <activity android:name=".sitioInsertActivity" />
         <activity android:name=".sitioEditActivity" />
         <activity android:name=".sitioDeleteActivity" />
-        <activity android:name=".sitioListActivity"></activity>
-
-
-
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".sitioListActivity" />
+        <activity android:name=".Main2Activity" />
 
     </application>
 

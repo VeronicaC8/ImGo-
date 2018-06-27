@@ -31,8 +31,8 @@ public class CategoriaFragment extends Fragment {
 
 
       View view =inflater.inflate(R.layout.fragment_categoria, container, false);
-    Button btn_restaurante = (Button) view.findViewById(R.id.btn_restaurantes);
-        Button btn_bares = (Button) view.findViewById(R.id.btn_bares);
+        Button btn_restaurante = (Button) view.findViewById(R.id.btn_restaurantes);
+        Button btn_bar = (Button) view.findViewById(R.id.btn_bar);
         Button btn_parques = (Button) view.findViewById(R.id.btn_parques);
         Button btn_entretenimiento = (Button) view.findViewById(R.id.btn_entretenimiento);
        //RESTAURANTE
@@ -40,17 +40,17 @@ public class CategoriaFragment extends Fragment {
         @Override
         public void onClick(View v) {
                   Intent in = new  Intent(getActivity(), categoriaRestaurantesActivity.class);
-                  in.putExtra("some", "some date");
+                  in.putExtra("Categoria", "Restaurantes");
                   startActivity(in);
         }
     });
-     //BARES
+     //BAR
 
-        btn_bares.setOnClickListener(new View.OnClickListener() {
+        btn_bar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new  Intent(getActivity(), categoriaBaresActivity.class);
-                in.putExtra("some", "some date");
+                in.putExtra("Categoria", "Bares");
                 startActivity(in);
             }
         });
@@ -59,7 +59,7 @@ public class CategoriaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent in = new  Intent(getActivity(), categoriaParquesActivity.class);
-                in.putExtra("some", "some date");
+                in.putExtra("Categoria", "Parques");
                 startActivity(in);
             }
         });
@@ -69,7 +69,7 @@ public class CategoriaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent in = new  Intent(getActivity(), categoriaEntretenimientoActivity.class);
-                in.putExtra("some", "some date");
+                in.putExtra("Categoria", "Entretenimiento");
                 startActivity(in);
             }
         });
