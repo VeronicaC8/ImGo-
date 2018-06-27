@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
 import android.widget.ListView;
 
+import com.google.android.gms.actions.ReserveIntents;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,8 +146,6 @@ public class ControlBD {
         }
         return regInsertados;
     }
-
-
     public ArrayList<Sitio> getSitioPrecio(String precioDeseado){
         ArrayList<Sitio> listaSitioPrecio= new ArrayList<>();
         List listaSitioPre= new ArrayList();
@@ -169,7 +169,6 @@ public class ControlBD {
 
 
   //  public ArrayList<Sitio>
-
     public Sitio consultarSitioPrecio(Integer idSitio){
         String[] id= {String.valueOf(idSitio)};
         Sitio sitio=null;
@@ -216,24 +215,154 @@ public class ControlBD {
     public String insertar(Sitio sitio){
         String regInsertados="Registro Insertado Nº= ";
         long contador=0;
-        ContentValues sit = new ContentValues();
-        sit.put("idSitio", sitio.getIdSitio());
-        sit.put("idCategoria", sitio.getIdCategoria());
-        sit.put("descripcion", sitio.getDescripcion());
-        sit.put("nombreSitio", sitio.getNombreSitio());
-        sit.put("precioMax", sitio.getPrecioMax());
-        sit.put("precioMin", sitio.getPrecioMin());
+        if(verificarIntegridad(sitio,1)){  //7
+            regInsertados="ID Sitio ya existe";
+        }else {
+            ContentValues sit = new ContentValues();
+            sit.put("idSitio", sitio.getIdSitio());
+            sit.put("idCategoria", sitio.getIdCategoria());
+            sit.put("descripcion", sitio.getDescripcion());
+            sit.put("nombreSitio", sitio.getNombreSitio());
+            sit.put("precioMax", sitio.getPrecioMax());
+            sit.put("precioMin", sitio.getPrecioMin());
 
-        contador=db.insert("sitio", null, sit);
-        if(contador==-1 || contador==0)
-        {
-            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
-        }
-        else {
-            regInsertados=regInsertados+contador;
+            contador = db.insert("sitio", null, sit);
+            if (contador == -1 || contador == 0) {
+                regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+            } else {
+                regInsertados = regInsertados + contador;
+            }
         }
         return regInsertados;
     }
+
+    public String actualizar(Sitio sitio){     //26
+        if(verificarIntegridad(sitio,3)){
+            String[] id={Integer.toString(sitio.getIdSitio())};
+            ContentValues cv = new ContentValues();
+            cv.put("idSitio", sitio.getIdSitio());
+            cv.put("idCategoria", sitio.getIdCategoria());
+            cv.put("descripcion", sitio.getDescripcion());
+            cv.put("nombreSitio", sitio.getNombreSitio());
+            cv.put("precioMax", sitio.getPrecioMax());
+            cv.put("precioMin", sitio.getPrecioMin());
+            db.update("sitio", cv, "idSitio=?", id);
+            return "Registro Actualizado Correctamente";
+        }else{
+            return "Registro con código"+ sitio.getIdSitio()+ "No existe";
+        }
+    }
+
+    public String eliminar(Sitio sitio){
+
+        String regAfectados="filas afectadas= "; int contador=0;
+        // 2 Verificar registro que exista
+        if(verificarIntegridad(sitio, 3)) {
+            String where="idSitio='"+sitio.getIdSitio()+"'";
+            contador+=db.delete("sitio", where, null);
+            regAfectados+=contador;
+            return regAfectados;
+        } else { return "Registro no Existe"; }
+    }
+
+    public String insertar(Ubicacion ubica){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        if(verificarIntegridad(ubica, 2)){
+            regInsertados=" . ";
+        }else {
+            ContentValues ubi = new ContentValues();
+            ubi.put("idUbicacion", ubica.getIdUbicacion());
+            ubi.put("idSitio", ubica.getIdSitio());
+            ubi.put("direccion", ubica.getDireccion());
+            ubi.put("coordenadaX", ubica.getCoordenadaX());
+            ubi.put("coordenadaY", ubica.getCoordenadaY());
+
+            contador = db.insert("ubicacion", null, ubi);
+            if (contador == -1 || contador == 0) {
+                regInsertados = "Error";
+            } else {
+                regInsertados = regInsertados + contador;
+            }
+        }
+        return regInsertados;
+    }
+    public String actualizar(Ubicacion ubicacion){     //26
+        if(verificarIntegridad(ubicacion,4)){
+            String[] id={Integer.toString(ubicacion.getIdUbicacion())};
+            ContentValues cv = new ContentValues();
+            cv.put("idUbicacion", ubicacion.getIdUbicacion());
+            cv.put("idSitio", ubicacion.getIdSitio());
+            cv.put("direccion", ubicacion.getDireccion());
+            cv.put("coordenadaX", ubicacion.getCoordenadaX());
+            cv.put("coordenadaY", ubicacion.getCoordenadaY());
+            db.update("ubicacion", cv, "idUbicacion=?", id);
+            return "Correcto";
+        }else{
+            return "No actualizado"+ ubicacion.getIdSitio();
+        }
+    }
+    public String eliminar(Ubicacion ubicacion){
+
+        String regAfectados="filas afectadas= "; int contador=0;
+        // 2 Verificar registro que exista
+        if(verificarIntegridad(ubicacion, 4)) {
+            String where="idSitio='"+ubicacion.getIdUbicacion()+"'";
+            contador+=db.delete("ubicacion", where, null);
+            regAfectados="";
+            regAfectados+=contador;
+            return regAfectados;
+        } else { return "Registro no Existe"; }
+    }
+
+
+
+    public boolean verificarIntegridad(Object dato, int relacion) throws SQLException{
+        switch (relacion){
+            case 1: {
+                Sitio sit=(Sitio) dato;
+                String[] id ={Integer.toString(sit.getIdSitio())};
+                abrir();
+                Cursor c2 = db.query("sitio", null, "idSitio = ? ", id, null, null, null);
+                if(c2.moveToFirst()){
+                    return true;
+                }
+                return false;
+            }
+            case 2: {
+                Ubicacion sit=(Ubicacion) dato;
+                String[] id ={Integer.toString(sit.getIdSitio())};
+                abrir();
+                Cursor c2 = db.query("ubicacion", null, "idSitio = ? ", id, null, null, null);
+                if(c2.moveToFirst()){
+                    return true;
+                }
+                return false;
+            }
+            case 3:{
+                Sitio sitio = (Sitio) dato;
+                String[] id = {Integer.toString(sitio.getIdSitio())};
+                abrir();
+                Cursor c2 = db.query("sitio", null, "idSitio = ? ", id, null, null, null);
+                if(c2.moveToFirst()){ //Se encontro
+                    return true; }
+                return false;
+            }
+            case 4:{
+                Ubicacion ubicacion = (Ubicacion) dato;
+                String[] id = {Integer.toString(ubicacion.getIdUbicacion())};
+                abrir();
+                Cursor c2 = db.query("ubicacion", null, "idUbicacion = ? ", id, null, null, null);
+                if(c2.moveToFirst()){ //Se encontro
+                    return true; }
+                return false;
+            }
+
+
+            default:return false;
+        }
+    }
+
 
 
     //LISTAR LAS CATEGORIAS POR RESTAURANTE
@@ -315,8 +444,8 @@ public class ControlBD {
         final  Integer[] VRidRol={0,1};
         final  String[] VRnombreRol={"admin","usuario"};
 
-        final  Integer[] VCidCategoria={1,2,3,4,5};
-        final  String[] VCnombreCategoria={"Restaurante","Cafe","Parque","Bar","Cines"};
+        final  Integer[] VCidCategoria={1,2,3,4};
+        final  String[] VCnombreCategoria={"Restaurante","Bares","Parque","Entretenimiento"};
 
 
         final  Integer[] VPidPuntuacion={1,2,3,4,5};
@@ -335,7 +464,7 @@ public class ControlBD {
         }
 
         Categoria categoria=new Categoria();
-        for(int i=0;i<5;i++){
+        for(int i=0;i<4;i++){
             categoria.setIdCategoria(VCidCategoria[i]);
             categoria.setNombreCategoria(VCnombreCategoria[i]);
             insertar(categoria);

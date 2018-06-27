@@ -1,6 +1,9 @@
 package com.example.veronica.imgo;
 
+import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +23,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private GoogleApiClient googleApiClient;
     private SignInButton signInButton;
     public static final int SIGN_IN_CODE =777;
+    MediaPlayer mediaPlayer;
+    private Vibrator vi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +39,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
                 .build();
 
+        mediaPlayer=MediaPlayer.create(this,R.raw.m1);
+        vi=(Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+
         signInButton=(SignInButton) findViewById(R.id.signInButton);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent =Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
                 startActivityForResult(intent, SIGN_IN_CODE);
-
+                mediaPlayer.start();
+                long time=3000;
+                vi.vibrate(time);
             }
         });
     }
