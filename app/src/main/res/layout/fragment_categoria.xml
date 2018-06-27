@@ -57,14 +57,14 @@
                 <!--BARES-->
 
                 <Button
-                    android:id="@+id/btn_bares"
+                    android:id="@+id/btn_bar"
                     android:layout_width="190dp"
                     android:layout_height="160dp"
                     android:layout_marginTop="5dp"
                     android:layout_weight="1"
                     android:background="@color/colorMint"
                     android:orientation="vertical"
-
+                    android:src="@drawable/ic_beer"
                     android:drawableTop  ="@drawable/ic_beer"
                     android:text="Bares"
                     android:textAlignment="center"

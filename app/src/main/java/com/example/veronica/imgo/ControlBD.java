@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteDatabase;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -165,6 +166,8 @@ public class ControlBD {
         cerrar();
         return listaSitioPrecio;
     }
+
+
   //  public ArrayList<Sitio>
 
     public Sitio consultarSitioPrecio(Integer idSitio){
@@ -184,6 +187,30 @@ public class ControlBD {
         }
         cerrar();
         return sitio;
+    }
+
+
+
+    //Lista de sitios por categoria
+    public ArrayList<Sitio> getCategoria(String precioDeseado){
+        ArrayList<Sitio> listaSitioPrecio= new ArrayList<>();
+        List listaSitioPre= new ArrayList();
+        String[] precioDe={precioDeseado,precioDeseado};   //precioMax","precioMin
+        abrir();
+        Cursor cursor=db.query("sitio",camposSitio,"precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
+        //    Cursor cursor=db.query("sitio",camposSitio,"idSitio WHERE precioMin < ? AND precioMax > ? ",precioDe,null,null,null);
+        while (cursor.moveToNext()){
+            Sitio sitio=new Sitio();
+            //   sitio.setIdSitio(cursor.getInt(0));
+            //   sitio.setIdUsuario(cursor.getInt(1));
+            //   sitio.setDescripcion(cursor.getString(2));
+            sitio.setNombreSitio(cursor.getString(3));
+            //   sitio.setPrecioMax(cursor.getFloat(4));
+            //   sitio.setPrecioMin(cursor.getFloat(5));
+            listaSitioPrecio.add(sitio);
+        }
+        cerrar();
+        return listaSitioPrecio;
     }
 
     public String insertar(Sitio sitio){
@@ -209,6 +236,79 @@ public class ControlBD {
     }
 
 
+    //LISTAR LAS CATEGORIAS POR RESTAURANTE
+   public List llenar_restaurantes(){
+
+        List lista= new ArrayList<>();
+        SQLiteDatabase database=DBHelper.getWritableDatabase();
+        String q= "SELECT * from sitio WHERE idCategoria=1";
+        Cursor registro= database.rawQuery(q,null);
+
+        while(registro.moveToNext()){
+          Sitio  sitio= new Sitio();
+          sitio.setNombreSitio(registro.getString(3));
+          sitio.setDescripcion(registro.getString(2));
+          lista.add(sitio);
+        }
+
+        return  lista;
+   }
+
+    //LISTAR LAS CATEGORIAS POR BARES
+    public List llenar_bares(){
+
+        List lista= new ArrayList<>();
+        SQLiteDatabase database=DBHelper.getWritableDatabase();
+        String q= "SELECT * from sitio WHERE idCategoria=2";
+        Cursor registro= database.rawQuery(q,null);
+
+        while(registro.moveToNext()){
+            Sitio  sitio= new Sitio();
+            sitio.setNombreSitio(registro.getString(3));
+            sitio.setDescripcion(registro.getString(2));
+            lista.add(sitio);
+        }
+
+        return  lista;
+    }
+
+    //LISTAR LAS CATEGORIAS POR PARQUES
+    public List llenar_parques(){
+
+        List lista= new ArrayList<>();
+        SQLiteDatabase database=DBHelper.getWritableDatabase();
+        String q= "SELECT * from sitio WHERE idCategoria=3";
+        Cursor registro= database.rawQuery(q,null);
+
+        while(registro.moveToNext()){
+            Sitio  sitio= new Sitio();
+            sitio.setNombreSitio(registro.getString(3));
+            sitio.setDescripcion(registro.getString(2));
+            lista.add(sitio);
+        }
+
+        return  lista;
+    }
+
+
+    //LISTAR LAS CATEGORIAS POR ENTRETENIMIENTO
+    public List llenar_entretenimiento(){
+
+        List lista= new ArrayList<>();
+        SQLiteDatabase database=DBHelper.getWritableDatabase();
+        String q= "SELECT * from sitio WHERE idCategoria=3";
+        Cursor registro= database.rawQuery(q,null);
+
+        while(registro.moveToNext()){
+            Sitio  sitio= new Sitio();
+            sitio.setNombreSitio(registro.getString(3));
+            sitio.setDescripcion(registro.getString(2));
+            lista.add(sitio);
+        }
+
+        return  lista;
+    }
+
 
     public String llenarBD(){
 
@@ -217,6 +317,7 @@ public class ControlBD {
 
         final  Integer[] VCidCategoria={1,2,3,4,5};
         final  String[] VCnombreCategoria={"Restaurante","Cafe","Parque","Bar","Cines"};
+
 
         final  Integer[] VPidPuntuacion={1,2,3,4,5};
         final  String[] VPdescripcionPuntuacion={"Malo","Regular","Bueno","Muy bueno","Excelente"};
