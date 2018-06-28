@@ -6,40 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".Main2Activity">
 
-    <TextView
-        android:id="@+id/tituloCompartir"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="COMPARTIR EN FACEBOOK"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlueJeansDark"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        />
+        <TextView
+            android:id="@+id/tituloCompartir"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="COMPARTIR EN FACEBOOK"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlueJeansDark"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="40dp"
-        android:orientation="vertical"></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnShareLink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Compartir Link"/>
-    <Button
-        android:id="@+id/btnSharePhoto"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:text="Compartir Foto"/>
-    <Button
-        android:id="@+id/btnShareVideo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
-        android:text="Compartir Video"/>
+            <ImageView
+                android:id="@+id/imgFoto"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:layout_gravity="center|center"
+                android:src="@drawable/facebook"
+                android:layout_marginTop="5dp" />
+
+            <Button
+                android:id="@+id/btnShareLink"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center"
+                android:layout_marginTop="10dp"
+                android:text="Compartir Link"/>
+
+        </LinearLayout>
+
+
+
 
 </RelativeLayout>

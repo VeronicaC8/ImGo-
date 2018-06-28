@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.veronica.imgo.sitioEditActivity">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView2"
@@ -310,6 +312,8 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints,OnClick" />
 
+
+    </ScrollView>
 
 </FrameLayout>
 
