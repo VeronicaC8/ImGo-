@@ -43,5 +43,8 @@
     <string name="precioMax">Precio Minimo:</string>
     <string name="precioMin">Precio Max:</string>
 
+    <string name="facebook_app_id">251759018915580</string>
+    <string name="facebook_login_protocol_scheme">fb251759018915580</string>
+
 
 </resources>
