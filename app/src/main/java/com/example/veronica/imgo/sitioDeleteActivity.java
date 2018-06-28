@@ -1,5 +1,6 @@
 package com.example.veronica.imgo;
 
+import android.content.Intent;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,5 +34,10 @@ public class sitioDeleteActivity extends AppCompatActivity {
         helper.cerrar();
         Toast.makeText(this, regEliminar, Toast.LENGTH_SHORT).show();
         Toast.makeText(this, regEliminarU, Toast.LENGTH_SHORT).show();
+    }
+
+    public void bsc(View v){
+        Intent intent = new Intent(this,MapsActivity.class);
+        startActivity(intent);
     }
 }

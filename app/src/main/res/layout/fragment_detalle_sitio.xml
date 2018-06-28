@@ -54,7 +54,9 @@
             android:backgroundTint="#31B404"
             android:drawablePadding="8dp"
             android:text="Im Go!"
-            android:textColor="@android:color/white" />
+            android:onClick="bsc"
+            android:textColor="@android:color/white"
+            tools:ignore="OnClick" />
 
         <TextView
             android:id="@+id/nombreId"

@@ -37,6 +37,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Marker marcador;
     double lat = 0.0;
     double lng = 0.0;
+    double lat1=13.7161024;
+    double lng2=-89.203469;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,7 +128,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         uiSettings.setZoomControlsEnabled(true);
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(13.7161024,-89.203469);
+        LatLng sydney = new LatLng(lat1,lng2);
         mMap.addMarker(new MarkerOptions().position(sydney).title("UES"));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));

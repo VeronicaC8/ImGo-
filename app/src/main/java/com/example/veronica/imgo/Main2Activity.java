@@ -39,8 +39,6 @@ public class Main2Activity extends AppCompatActivity {
 
         //Init View
         btnShareLink=(Button)findViewById(R.id.btnShareLink);
-        btnSharePhoto=(Button)findViewById(R.id.btnSharePhoto);
-        btnShareVideo=(Button)findViewById(R.id.btnShareVideo);
 
         //Init FB
         callbackManager=CallbackManager.Factory.create();
@@ -66,8 +64,8 @@ public class Main2Activity extends AppCompatActivity {
                     }
                 });
                 ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                        .setQuote("Link de Campus universitario UES")
-                        .setContentUrl(Uri.parse("https://campus.ues.edu.sv/")).build();
+                        .setQuote("Link compartido por ImGo!")
+                        .setContentUrl(Uri.parse("https://youtube.com")).build();
                 if(ShareDialog.canShow(ShareLinkContent.class)){
                     shareDialog.show(linkContent);
                 }
