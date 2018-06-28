@@ -8,14 +8,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />
-<<<<<<< HEAD
+
     <uses-permission android:name="android.permission.INTERNET"/>
-=======
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
->>>>>>> da307c1fc9f1b2dbb37c09749802f76dabb0d062
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,14 +23,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
+
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
 
-        <activity android:name=".MainActivity">
-=======
         <activity android:name=".LoginActivity">
->>>>>>> da307c1fc9f1b2dbb37c09749802f76dabb0d062
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

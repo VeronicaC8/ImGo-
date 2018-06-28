@@ -66,7 +66,7 @@ public class Main2Activity extends AppCompatActivity {
                     }
                 });
                 ShareLinkContent linkContent = new ShareLinkContent.Builder()
-                        .setQuote("This is useful link ")
+                        .setQuote("Link de Campus universitario UES")
                         .setContentUrl(Uri.parse("https://campus.ues.edu.sv/")).build();
                 if(ShareDialog.canShow(ShareLinkContent.class)){
                     shareDialog.show(linkContent);
