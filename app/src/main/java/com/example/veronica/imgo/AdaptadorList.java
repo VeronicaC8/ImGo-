@@ -42,10 +42,15 @@ public class AdaptadorList extends RecyclerView.Adapter<AdaptadorList.Personajes
     @Override
     public void onBindViewHolder(PersonajesViewHolder holder, int position) {
         holder.txtNombre.setText(listaSitio.get(position).getNombreSitio());
-       // holder.txtInformacion.setText(listaSitio.get(position).getDescripcion());
-       // holder.foto.setImageResource(listaSitio.get(position).getImagen());
+        holder.txtInformacion.setText(listaSitio.get(position).getDescripcion());
+        //holder.ratingBar.setText(listaSitio.get(position).getPuntuacion());
+        // holder.foto.setImageResource(listaSitio.get(position).getImagen());
+        if(listaSitio.get(position).getImagen()!=null){
+            holder.foto.setImageBitmap(listaSitio.get(position).getImagen2());
+        }else{
+            holder.foto.setImageResource(R.drawable.img_base);
+        }
     }
-
     @Override
     public int getItemCount() {
         return listaSitio.size();
@@ -69,11 +74,13 @@ public class AdaptadorList extends RecyclerView.Adapter<AdaptadorList.Personajes
         public PersonajesViewHolder(View itemView) {
             super(itemView);
             txtNombre= (TextView) itemView.findViewById(R.id.idNombre);
+            foto=(ImageView) itemView.findViewById(R.id.idImagen);
+            txtInformacion= (TextView) itemView.findViewById(R.id.idInfo);
             if (Utilidades.PORTRAIT==true){
-                txtInformacion= (TextView) itemView.findViewById(R.id.idInfo);
+
             }
 
-            foto= (ImageView) itemView.findViewById(R.id.idImagen);
+
         }
     }
 }
