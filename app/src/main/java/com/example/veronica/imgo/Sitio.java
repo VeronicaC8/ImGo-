@@ -1,5 +1,9 @@
 package com.example.veronica.imgo;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import java.io.Serializable;
 
 public class Sitio implements Serializable{
@@ -10,12 +14,13 @@ public class Sitio implements Serializable{
     private float precioMax;
     private float precioMin;
     private String imagen;
+    private Bitmap imagen2;
+    private String dato;
 
     public Sitio() {
     }
 
-
-    public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin, String imagen) {
+    public Sitio(int idSitio, int idCategoria, String descripcion, String nombreSitio, float precioMax, float precioMin, String imagen, Bitmap imagen2, String dato) {
         this.idSitio = idSitio;
         this.idCategoria = idCategoria;
         this.descripcion = descripcion;
@@ -23,6 +28,8 @@ public class Sitio implements Serializable{
         this.precioMax = precioMax;
         this.precioMin = precioMin;
         this.imagen = imagen;
+        this.imagen2 = imagen2;
+        this.dato = dato;
     }
 
 
@@ -89,6 +96,37 @@ public class Sitio implements Serializable{
     }
 
 
+    public Bitmap getImagen2() {
+        return imagen2;
+    }
+
+    public void setImagen2(Bitmap imagen2) {
+        this.imagen2 = imagen2;
+    }
+
+    public String getDato() {
+        return dato;
+    }
+
+    public void setDato(String dato) {
+        this.dato = dato;
+
+        try {
+            byte[] byteCode= Base64.decode(dato,Base64.DEFAULT);
+            //this.imagen= BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
+
+            int alto=100;//alto en pixeles
+            int ancho=150;//ancho en pixeles
+
+            Bitmap foto= BitmapFactory.decodeByteArray(byteCode,0,byteCode.length);
+            this.imagen2=Bitmap.createScaledBitmap(foto,alto,ancho,true);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+
+        }
+    }
 }
 
 

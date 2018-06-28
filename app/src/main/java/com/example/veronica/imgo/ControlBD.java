@@ -62,7 +62,7 @@ public class ControlBD {
                 db.execSQL("CREATE TABLE usuario(idUsuario INTEGER NOT NULL PRIMARY KEY, idRol INTEGER NOT NULL, userName VARCHAR(20) NOT NULL, password VARCHAR(8) NOT NULL); ");
                 db.execSQL("CREATE TABLE categoria(idCategoria INTEGER NOT NULL PRIMARY KEY, nombreCategoria VARCHAR(50) NOT NULL); ");
                 db.execSQL("CREATE TABLE ubicacion(idUbicacion INTEGER NOT NULL PRIMARY KEY, idSitio INTEGER NOT NULL, direccion VARCHAR(50) NOT NULL, coordenadaX FLOAT NOT NULL,coordenadaY FLOAT NOT NULL); ");
-                db.execSQL("CREATE TABLE sitio(idSitio INTEGER NOT NULL PRIMARY KEY, idCategoria INTEGER NOT NULL, descripcion VARCHAR(100) NOT NULL, nombreSitio VARCHAR(20) NOT NULL, precioMax FLOAT NOT NULL, precioMin FLOAT NOT NULL, imagen VARCHAR(40)); ");
+                db.execSQL("CREATE TABLE sitio(idSitio INTEGER NOT NULL PRIMARY KEY, idCategoria INTEGER NOT NULL, descripcion VARCHAR(100) NOT NULL, nombreSitio VARCHAR(20) NOT NULL, precioMax FLOAT NOT NULL, precioMin FLOAT NOT NULL, imagen VARCHAR(40),imagen2 INTEGER,dato VARCHAR(100)); ");
                 db.execSQL("CREATE TABLE puntuacion(idPuntuacion INTEGER NOT NULL PRIMARY KEY, descripcionPuntuacion VARCHAR(10) NOT NULL); ");
                 db.execSQL("CREATE TABLE puntuacionSitio(idPuntuacionSitio INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, idPuntuacion INTEGER NOT NULL, idSitio INTEGER NOT NULL, resena VARCHAR(50) NOT NULL); ");
                 //db.execSQL("INSERT INTO sitio(idSitio, idCategoria, descripcion, nombreSitio, precioMax, precioMin) values(01,1,'Pizzeria de especialidad, ingredientes seleccionados, telefono a domicilio 2275-5555','Pizza Hut',15,4);");
@@ -225,6 +225,9 @@ public class ControlBD {
             sit.put("nombreSitio", sitio.getNombreSitio());
             sit.put("precioMax", sitio.getPrecioMax());
             sit.put("precioMin", sitio.getPrecioMin());
+            sit.put("imagen2", String.valueOf(sitio.getImagen()));
+            sit.put("dato",sitio.getDato());
+
 
             contador = db.insert("sitio", null, sit);
             if (contador == -1 || contador == 0) {
@@ -426,6 +429,24 @@ public class ControlBD {
         List lista= new ArrayList<>();
         SQLiteDatabase database=DBHelper.getWritableDatabase();
         String q= "SELECT * from sitio WHERE idCategoria=3";
+        Cursor registro= database.rawQuery(q,null);
+
+        while(registro.moveToNext()){
+            Sitio  sitio= new Sitio();
+            sitio.setNombreSitio(registro.getString(3));
+            sitio.setDescripcion(registro.getString(2));
+            lista.add(sitio);
+        }
+
+        return  lista;
+    }
+
+    //LISTAR LOS SITIOS
+    public List llenar_sitios(){
+
+        List lista= new ArrayList<>();
+        SQLiteDatabase database=DBHelper.getWritableDatabase();
+        String q= "SELECT * from sitio WHERE idSitio";
         Cursor registro= database.rawQuery(q,null);
 
         while(registro.moveToNext()){
