@@ -59,12 +59,13 @@
         <TextView
             android:id="@+id/nombreId"
             android:layout_width="112dp"
-            android:layout_height="20dp"
-            android:textStyle="italic"
+            android:layout_height="25dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="18dp"
+            android:autoSizeMaxTextSize="25dp"
             android:text="Nombre:"
-            />
+            android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
+            android:visibility="visible" />
 
             <TextView
                 android:id="@+id/descripcionId"
