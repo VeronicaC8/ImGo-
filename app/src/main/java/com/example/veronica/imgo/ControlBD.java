@@ -441,6 +441,24 @@ public class ControlBD {
         return  lista;
     }
 
+    //LISTAR LOS SITIOS
+    public List llenar_sitios(){
+
+        List lista= new ArrayList<>();
+        SQLiteDatabase database=DBHelper.getWritableDatabase();
+        String q= "SELECT * from sitio WHERE idSitio";
+        Cursor registro= database.rawQuery(q,null);
+
+        while(registro.moveToNext()){
+            Sitio  sitio= new Sitio();
+            sitio.setNombreSitio(registro.getString(3));
+            sitio.setDescripcion(registro.getString(2));
+            lista.add(sitio);
+        }
+
+        return  lista;
+    }
+
 
     public String llenarBD(){
 
