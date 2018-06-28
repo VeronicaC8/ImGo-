@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.example.veronica.imgo.DetalleSitioFragment">
 
@@ -12,7 +13,7 @@
         android:layout_height="250dp"
         android:layout_marginBottom="10dp"
         android:scaleType="fitXY"
-        android:src="@drawable/ic_beer" />
+        android:src="@drawable/img_base" />
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
@@ -26,6 +27,7 @@
                 android:scaleX="0.5"
                 android:scaleY="0.5"
                 android:transformPivotX="0dp" />
+
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
@@ -41,21 +43,42 @@
 
         </TableRow>
 
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="250dp"
+            android:backgroundTint="#31B404"
+            android:drawablePadding="8dp"
+            android:text="Im Go!"
+            android:textColor="@android:color/white" />
+
         <TextView
             android:id="@+id/nombreId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="150dp"
-            android:text="Nombre:" />
+            android:layout_width="112dp"
+            android:layout_height="20dp"
+            android:textStyle="italic"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="18dp"
+            android:text="Nombre:"
+            />
+
+            <TextView
+                android:id="@+id/descripcionId"
+                android:layout_width="119dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="18dp"
+                android:text="Descripcion:"
+                />
+        <TableRow>
 
 
-        <TextView
-            android:id="@+id/descripcionId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="50dp"
-            android:text="Descripcion:" />
 
+        </TableRow>
     </TableLayout>
 
 </LinearLayout>
